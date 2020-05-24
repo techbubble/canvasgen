@@ -8,4 +8,6 @@ This sample project renders two gradients on a canvas and lets the user download
 * Tailwind CSS
 * Javascript Class
 
+!(demo.gif)
+
 Would love to hear your feedback, or if you run into any problems. Twitter: @techbubble
