@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Canvas Image Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="art-canvas.js"></script>
+</head>
+
+<body class="text-gray-800 antialiased">
+    <main class="px-40 my-40 bg-gray-300">
+        <div class="container mx-auto p-4">
+            <div class="flex flex-wrap">
+
+                <!-- Left column with custom HTML element-->
+                <div class="lg:w-1/2 md:w-full my-8">
+                    <h1 class="mb-4">Canvas Image Generator</h1>
+                    <div class="bg-white w-full shadow-lg rounded-lg">
+                        <art-canvas id="demo"></art-canvas>
+                    </div>
+                </div>
+
+                <!-- Right column with inputs for generating canvas content-->
+                <div class="lg:w-1/2 md:w-full my-8 p-8">
+
+                    <!-- Label and dropdown for Box 1 palette -->
+                    <div class="px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
+                            Box 1 Palette
+                        </label>
+                        <div class="relative">
+                            <!-- Select element calls refresh() function (see page bottom) when changed -->
+                            <select id="box-1" onchange="refresh()"
+                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option selected>Red</option>
+                                <option>Green</option>
+                                <option>Blue</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <!-- Label and dropdown for Box 2 palette -->
+                    <div class="px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
+                            Box 2 Palette
+                        </label>
+                        <div class="relative">
+                            <!-- Select element calls refresh() function (see page bottom) when changed -->
+                            <select id="box-2" onchange="refresh()"
+                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option selected>Purple</option>
+                                <option>Yellow</option>
+                                <option>Pink</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="download()" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white my-6 py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        Download PNG
+                    </button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <script>
+        let artCanvas = document.getElementById('demo');
+        refresh();  // Call refresh right away so canvas is displayed with defaul values
+
+        function refresh() {
+            artCanvas.render({
+                width: 600,
+                height: 400,
+                box1: document.getElementById('box-1').value,  // Current value of dropdown with id='box-1'
+                box2: document.getElementById('box-2').value   // Current value of dropdown with id='box-2'
+            });
+        }
+
+        function download() {
+            artCanvas.download();
+        }
+    </script>
+</body>
+
+</html>
