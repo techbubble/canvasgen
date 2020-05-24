@@ -1,4 +1,4 @@
-#Canvas Gen
+# Canvas Gen
 
 This sample project renders two gradients on a canvas and lets the user download the canvas as a PNG image. This code is helpful for developers learning Javascript. It demonstrates the following concepts:
 
